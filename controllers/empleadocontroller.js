@@ -63,9 +63,28 @@ const update = async (req, res) => {
 };
 
 
+// Eliminar un empleado por ID
+const deleteEmpleado = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const empleadoEliminado = await empleado.findByIdAndDelete(id);
+
+    if (!empleadoEliminado) {
+      return res.status(404).json({ message: "Empleado no encontrado" });
+    }
+
+    res.json({ message: "Empleado eliminado correctamente" });
+  } catch (error) {
+    res.status(500).json({ message: "Error al eliminar el empleado", error });
+  }
+};
+
+
 module.exports = {
   index,
   show,
   guardar,
-  update
+  update,
+  deleteEmpleado
 };

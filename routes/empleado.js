@@ -18,4 +18,5 @@ router.get("/show/:id", empleadoController.show);
 router.get("/", empleadoController.index);
 router.post("/guardar", validarEmpleado, manejarValidaciones, empleadoController.guardar);
 router.put("/update/:id", empleadoController.update);
+router.delete("/:id", empleadoController.deleteEmpleado);
 module.exports = router;
